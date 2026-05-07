@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Model Comparison — CardioPredict</title>
+  <meta name="description" content="Compare Logistic Regression, Random Forest, and SVM accuracy metrics, F1 scores, and ROC curves.">
+  <link rel="stylesheet" href="css/globals.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+  <div class="bg-mesh"></div>
+
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand"><div class="brand-icon">❤️</div>Cardio<span class="accent">Predict</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html"><span class="nav-icon">🏠</span>Home</a></li>
+      <li><a href="dashboard.html"><span class="nav-icon">🔬</span>Dashboard</a></li>
+      <li><a href="comparison.html" class="active"><span class="nav-icon">📊</span>Model Comparison</a></li>
+      <li><a href="analytics.html"><span class="nav-icon">📈</span>Analytics</a></li>
+      <li><a href="report.html"><span class="nav-icon">📋</span>Reports</a></li>
+      <li><a href="about.html"><span class="nav-icon">ℹ️</span>About</a></li>
+    </ul>
+    <div class="nav-status">
+      <span class="dot dot-green blink" id="status-dot"></span>
+      <span id="status-text">System Online</span>
+    </div>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="container section-sm">
+      <div class="page-title">
+        <div class="title-icon">📊</div>
+        Model Comparison
+      </div>
+      <p class="page-subtitle">Performance metrics for all three ML algorithms trained on the UCI Heart Disease dataset.</p>
+
+      <!-- Loading -->
+      <div id="comparison-loading" class="card flex-center" style="min-height:200px;gap:var(--sp-md)">
+        <div class="spinner"></div>
+        <p style="color:var(--text-secondary);font-size:0.9rem">Loading model metrics...</p>
+      </div>
+
+      <!-- Best model banner -->
+      <div id="best-banner" class="best-banner" style="display:none">
+        <span class="best-banner-icon">🏆</span>
+        <div>
+          <div class="best-banner-text">—</div>
+          <div class="best-banner-sub">—</div>
+        </div>
+      </div>
+
+      <!-- Model cards -->
+      <div id="model-cards" class="comparison-grid"></div>
+
+      <!-- Bar Chart -->
+      <div class="card" style="margin-bottom:var(--sp-xl)">
+        <div class="card-header">
+          <span class="card-title">📊 Performance Metrics Comparison</span>
+          <span class="badge badge-blue">Accuracy · Precision · Recall · F1 · AUC</span>
+        </div>
+        <div class="chart-container" style="height:380px">
+          <canvas id="comparison-chart"></canvas>
+        </div>
+      </div>
+
+      <!-- ROC Curve -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">📈 ROC Curve — All Models</span>
+          <span class="badge badge-green">AUC Comparison</span>
+        </div>
+        <img id="roc-img" class="chart-img" src="" alt="ROC Curve" style="min-height:200px;background:var(--bg-panel)">
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-container"></div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/comparison.js"></script>
+</body>
+</html>

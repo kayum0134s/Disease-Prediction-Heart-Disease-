@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CardioPredict — AI-Powered Heart Disease Risk Assessment</title>
+  <meta name="description" content="CardioPredict uses advanced Machine Learning (Logistic Regression, Random Forest, SVM) to predict cardiovascular disease risk with clinical-grade accuracy.">
+  <link rel="stylesheet" href="css/globals.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+  <div class="bg-mesh"></div>
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">
+      <div class="brand-icon">❤️</div>
+      Cardio<span class="accent">Predict</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html"      class="active"><span class="nav-icon">🏠</span>Home</a></li>
+      <li><a href="dashboard.html"          ><span class="nav-icon">🔬</span>Dashboard</a></li>
+      <li><a href="comparison.html"         ><span class="nav-icon">📊</span>Model Comparison</a></li>
+      <li><a href="analytics.html"          ><span class="nav-icon">📈</span>Analytics</a></li>
+      <li><a href="report.html"             ><span class="nav-icon">📋</span>Reports</a></li>
+      <li><a href="about.html"              ><span class="nav-icon">ℹ️</span>About</a></li>
+    </ul>
+    <div class="nav-status">
+      <span class="dot dot-green blink" id="status-dot"></span>
+      <span id="status-text">System Online</span>
+    </div>
+  </nav>
+
+  <div class="page-wrapper">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-eyebrow">
+            <span class="dot dot-green blink"></span>
+            AI-Powered Cardiovascular Intelligence
+          </div>
+          <h1 class="hero-title">
+            Predict Heart Disease<br>
+            with <span class="highlight">AI Precision</span>
+          </h1>
+          <p class="hero-desc">
+            CardioPredict combines three elite Machine Learning algorithms — 
+            Logistic Regression, Random Forest, and SVM — to deliver 
+            clinical-grade cardiovascular risk assessment in seconds.
+          </p>
+          <div class="hero-actions">
+            <a href="dashboard.html" class="btn btn-primary btn-lg">
+              🔬 Start Prediction
+            </a>
+            <a href="about.html" class="btn btn-ghost btn-lg">
+              Learn More →
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero visual: animated ECG -->
+        <div class="hero-visual animate-float">
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">❤️ Live ECG Monitor</span>
+              <span class="badge badge-green blink">LIVE</span>
+            </div>
+            <canvas id="ecg-canvas"></canvas>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px">
+              <div style="text-align:center">
+                <div style="font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:#00d4ff">72</div>
+                <div style="font-size:0.72rem;color:var(--text-secondary);text-transform:uppercase">BPM</div>
+              </div>
+              <div style="text-align:center">
+                <div style="font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:#00ff88">120/80</div>
+                <div style="font-size:0.72rem;color:var(--text-secondary);text-transform:uppercase">BP mmHg</div>
+              </div>
+              <div style="text-align:center">
+                <div style="font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:#bf5af2">98.2%</div>
+                <div style="font-size:0.72rem;color:var(--text-secondary);text-transform:uppercase">SpO₂</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS BAR -->
+    <div class="container">
+      <div class="stats-bar">
+        <div class="stat-item">
+          <div class="stat-num">87%+</div>
+          <div class="stat-text">Model Accuracy</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">3</div>
+          <div class="stat-text">ML Algorithms</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">13</div>
+          <div class="stat-text">Clinical Features</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">1000+</div>
+          <div class="stat-text">Training Samples</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FEATURES -->
+    <section class="features-section">
+      <div class="container">
+        <div style="text-align:center;margin-bottom:var(--sp-3xl)">
+          <h2>Everything You Need for<br><span style="color:var(--neon-blue)">Cardiovascular Risk Intelligence</span></h2>
+          <p style="max-width:560px;margin:var(--sp-md) auto 0">A complete AI-powered platform that transforms raw clinical data into actionable cardiovascular insights.</p>
+        </div>
+
+        <div class="grid-3" style="gap:var(--sp-lg)">
+          <div class="feature-card stagger-1">
+            <div class="feature-icon blue">🧠</div>
+            <h4 class="feature-title">Tri-Model ML Engine</h4>
+            <p class="feature-desc">Logistic Regression, Random Forest, and SVM trained on UCI Heart Disease data. Random Forest serves as the final prediction engine.</p>
+          </div>
+          <div class="feature-card stagger-2">
+            <div class="feature-icon red">📊</div>
+            <h4 class="feature-title">Risk Score Analysis</h4>
+            <p class="feature-desc">Real-time probabilistic risk scoring (0–100%) with animated gauges and risk band classification (Low / Moderate / High / Critical).</p>
+          </div>
+          <div class="feature-card stagger-3">
+            <div class="feature-icon green">📄</div>
+            <h4 class="feature-title">PDF Medical Reports</h4>
+            <p class="feature-desc">Professionally formatted medical reports with patient data, model comparison, diagnosis, and personalized recommendations — download instantly.</p>
+          </div>
+          <div class="feature-card stagger-4">
+            <div class="feature-icon purple">📈</div>
+            <h4 class="feature-title">Interactive Analytics</h4>
+            <p class="feature-desc">Confusion matrices, ROC curves, feature importance charts, and dataset distributions — all server-rendered and served live.</p>
+          </div>
+          <div class="feature-card stagger-5">
+            <div class="feature-icon blue">🗂️</div>
+            <h4 class="feature-title">Patient History</h4>
+            <p class="feature-desc">Every prediction is automatically saved to an SQLite database. Search, filter, and download PDF reports for any patient at any time.</p>
+          </div>
+          <div class="feature-card stagger-6">
+            <div class="feature-icon red">💊</div>
+            <h4 class="feature-title">Health Recommendations</h4>
+            <p class="feature-desc">Personalized health guidance based on risk band — from lifestyle tips for low-risk patients to urgent clinical referrals for critical cases.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ML WORKFLOW -->
+    <section class="section" style="background:linear-gradient(180deg, var(--bg-raised) 0%, var(--bg-base) 100%)">
+      <div class="container">
+        <div style="text-align:center;margin-bottom:var(--sp-2xl)">
+          <h2>ML Pipeline <span style="color:var(--neon-blue)">Architecture</span></h2>
+          <p>From raw clinical data to actionable cardiovascular risk prediction</p>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px;font-size:0.85rem">
+          <div class="card" style="padding:12px 20px;text-align:center;min-width:130px">
+            <div style="font-size:1.3rem;margin-bottom:4px">📁</div>
+            <div style="font-family:var(--font-display);font-size:0.75rem;color:var(--neon-blue)">Dataset</div>
+            <div style="font-size:0.72rem;color:var(--text-muted)">UCI Heart CSV</div>
+          </div>
+          <span style="color:var(--neon-blue);font-size:1.2rem">→</span>
+          <div class="card" style="padding:12px 20px;text-align:center;min-width:130px">
+            <div style="font-size:1.3rem;margin-bottom:4px">🔧</div>
+            <div style="font-family:var(--font-display);font-size:0.75rem;color:var(--neon-blue)">Preprocessing</div>
+            <div style="font-size:0.72rem;color:var(--text-muted)">Clean + Scale + Encode</div>
+          </div>
+          <span style="color:var(--neon-blue);font-size:1.2rem">→</span>
+          <div class="card" style="padding:12px 20px;text-align:center;min-width:130px">
+            <div style="font-size:1.3rem;margin-bottom:4px">✂️</div>
+            <div style="font-family:var(--font-display);font-size:0.75rem;color:var(--neon-blue)">Train/Test Split</div>
+            <div style="font-size:0.72rem;color:var(--text-muted)">80% / 20%</div>
+          </div>
+          <span style="color:var(--neon-blue);font-size:1.2rem">→</span>
+          <div class="card" style="padding:12px 20px;text-align:center;min-width:130px">
+            <div style="font-size:1.3rem;margin-bottom:4px">🤖</div>
+            <div style="font-family:var(--font-display);font-size:0.75rem;color:var(--neon-blue)">Train 3 Models</div>
+            <div style="font-size:0.72rem;color:var(--text-muted)">LR · RF · SVM</div>
+          </div>
+          <span style="color:var(--neon-blue);font-size:1.2rem">→</span>
+          <div class="card" style="padding:12px 20px;text-align:center;min-width:130px">
+            <div style="font-size:1.3rem;margin-bottom:4px">🏆</div>
+            <div style="font-family:var(--font-display);font-size:0.75rem;color:var(--neon-blue)">Compare & Select</div>
+            <div style="font-size:0.72rem;color:var(--text-muted)">Best = Random Forest</div>
+          </div>
+          <span style="color:var(--neon-blue);font-size:1.2rem">→</span>
+          <div class="card" style="padding:12px 20px;text-align:center;min-width:130px">
+            <div style="font-size:1.3rem;margin-bottom:4px">🎯</div>
+            <div style="font-family:var(--font-display);font-size:0.75rem;color:var(--neon-blue)">Prediction</div>
+            <div style="font-size:0.72rem;color:var(--text-muted)">Risk Score + Report</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section">
+      <div class="container" style="text-align:center">
+        <h2>Ready to Assess Your <span style="color:var(--neon-red)">Cardiovascular Risk</span>?</h2>
+        <p style="margin:var(--sp-md) auto var(--sp-xl);max-width:500px">
+          Enter your clinical parameters and let our AI engine deliver a comprehensive cardiac risk profile in under 5 seconds.
+        </p>
+        <a href="dashboard.html" class="btn btn-primary btn-xl">
+          🔬 Launch Prediction Dashboard
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="border-top:1px solid var(--border-dim);padding:var(--sp-xl) 0;text-align:center">
+      <div class="container">
+        <p style="font-size:0.8rem;color:var(--text-muted)">
+          CardioPredict © 2026 · Built with Python, Flask, scikit-learn, and Chart.js ·
+          <span style="color:var(--neon-blue)">For educational purposes only</span>
+        </p>
+      </div>
+    </footer>
+  </div>
+
+  <div id="toast-container"></div>
+
+  <script src="js/api.js"></script>
+  <script src="js/nav.js"></script>
+  <script>
+    // Animated ECG canvas
+    const canvas  = document.getElementById('ecg-canvas');
+    const ctx2d   = canvas?.getContext('2d');
+    let offset = 0;
+    function drawECG() {
+      if (!ctx2d) return;
+      const W = canvas.width  = canvas.offsetWidth;
+      const H = canvas.height = canvas.offsetHeight;
+      ctx2d.fillStyle = 'rgba(5,11,31,0.3)';
+      ctx2d.fillRect(0, 0, W, H);
+      ctx2d.beginPath();
+      ctx2d.strokeStyle = '#00d4ff';
+      ctx2d.lineWidth   = 2;
+      ctx2d.shadowColor = '#00d4ff';
+      ctx2d.shadowBlur  = 8;
+      for (let x = 0; x < W; x++) {
+        const t   = (x + offset) / W * Math.PI * 6;
+        let y = H / 2;
+        const phase = ((x + offset) % 120) / 120;
+        if      (phase < 0.1)  y = H/2 - Math.sin(phase/0.1 * Math.PI) * 20;
+        else if (phase < 0.15) y = H/2 + Math.sin((phase-0.1)/0.05 * Math.PI) * 55;
+        else if (phase < 0.22) y = H/2 - Math.sin((phase-0.15)/0.07 * Math.PI) * 80;
+        else if (phase < 0.30) y = H/2 + Math.sin((phase-0.22)/0.08 * Math.PI) * 25;
+        else if (phase < 0.45) y = H/2 - Math.sin((phase-0.30)/0.15 * Math.PI) * 15;
+        else                   y = H/2 + Math.sin(t * 0.5) * 3;
+        if (x === 0) ctx2d.moveTo(x, y); else ctx2d.lineTo(x, y);
+      }
+      ctx2d.stroke();
+      offset += 2;
+      requestAnimationFrame(drawECG);
+    }
+    drawECG();
+  </script>
+</body>
+</html>

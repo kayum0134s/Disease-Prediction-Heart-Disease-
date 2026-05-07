@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — CardioPredict</title>
+  <meta name="description" content="Architecture, ML workflow, tech stack, viva Q&A, and resume description for the CardioPredict AI healthcare platform.">
+  <link rel="stylesheet" href="css/globals.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+  <div class="bg-mesh"></div>
+
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand"><div class="brand-icon">❤️</div>Cardio<span class="accent">Predict</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html"><span class="nav-icon">🏠</span>Home</a></li>
+      <li><a href="dashboard.html"><span class="nav-icon">🔬</span>Dashboard</a></li>
+      <li><a href="comparison.html"><span class="nav-icon">📊</span>Model Comparison</a></li>
+      <li><a href="analytics.html"><span class="nav-icon">📈</span>Analytics</a></li>
+      <li><a href="report.html"><span class="nav-icon">📋</span>Reports</a></li>
+      <li><a href="about.html" class="active"><span class="nav-icon">ℹ️</span>About</a></li>
+    </ul>
+    <div class="nav-status">
+      <span class="dot dot-green blink" id="status-dot"></span>
+      <span id="status-text">System Online</span>
+    </div>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="container section-sm">
+      <div class="page-title"><div class="title-icon">ℹ️</div>About CardioPredict</div>
+      <p class="page-subtitle">A startup-grade AI healthcare platform built for cardiovascular disease prediction.</p>
+
+      <div class="grid-2" style="margin-bottom:var(--sp-xl)">
+        <!-- Project Description -->
+        <div class="card">
+          <div class="card-header"><span class="card-title">🚀 Project Overview</span></div>
+          <p style="font-size:0.9rem;line-height:1.8;color:var(--text-primary)">
+            <strong style="color:var(--text-white)">CardioPredict</strong> is a production-grade, AI-powered cardiovascular risk 
+            assessment platform. It trains an ensemble of three Machine Learning models on the UCI Heart Disease 
+            dataset and exposes a REST API for real-time prediction, model comparison, and automated medical report generation.
+          </p>
+          <div class="divider"></div>
+          <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7">
+            The system processes 13 clinical parameters — including age, blood pressure, cholesterol, 
+            ECG results, and thalassemia type — through a rigorous ML pipeline to output probabilistic 
+            risk scores (0–100%) and classify patients into four risk bands: Low, Moderate, High, and Critical.
+          </p>
+        </div>
+
+        <!-- Resume Description -->
+        <div class="card" style="border-color:rgba(0,212,255,0.3)">
+          <div class="card-header">
+            <span class="card-title">📝 Resume Description</span>
+            <span class="badge badge-green">Copy-Ready</span>
+          </div>
+          <div style="background:var(--bg-raised);border:1px solid var(--border-dim);border-radius:var(--r-md);padding:var(--sp-md);font-size:0.82rem;line-height:1.8;color:var(--text-primary)">
+            <strong style="color:var(--neon-blue)">CardioPredict</strong> — AI-Powered Cardiovascular Risk Assessment Platform<br><br>
+            Built a production-grade heart disease prediction system using an ensemble ML pipeline 
+            (Logistic Regression, Random Forest, SVM) trained on the UCI Heart Disease dataset. 
+            Developed a Flask REST API backend serving real-time probabilistic risk scores with a 
+            glassmorphism-themed, animated frontend dashboard. Features: multi-model accuracy 
+            comparison, PDF medical report generation, patient history persistence (SQLite), 
+            confusion matrix visualization, and personalized health recommendations based on risk bands. 
+            Achieved <strong style="color:var(--neon-green)">87%+ classification accuracy</strong> 
+            with Random Forest as the final inference engine.
+          </div>
+          <p style="font-size:0.75rem;color:var(--text-muted);margin-top:var(--sp-sm)">
+            Tech: Python · Flask · scikit-learn · SQLite · ReportLab · Chart.js · HTML/CSS/JS
+          </p>
+        </div>
+      </div>
+
+      <!-- ML Workflow Timeline -->
+      <div class="card" style="margin-bottom:var(--sp-xl)">
+        <div class="card-header"><span class="card-title">🔬 ML Workflow Pipeline</span></div>
+        <div class="timeline">
+          <div class="timeline-step stagger-1">
+            <div class="timeline-label">Step 1 — Dataset Collection</div>
+            <div class="timeline-desc">UCI Heart Disease dataset (14 features, 303 original records). Synthetic expansion to 1000 samples for robust training.</div>
+          </div>
+          <div class="timeline-step stagger-2">
+            <div class="timeline-label">Step 2 — Data Cleaning & Preprocessing</div>
+            <div class="timeline-desc">Median imputation for missing values, duplicate removal, target binarization. One-hot encoding for categorical features (cp, restecg, slope, thal, exang).</div>
+          </div>
+          <div class="timeline-step stagger-3">
+            <div class="timeline-label">Step 3 — Feature Engineering & Scaling</div>
+            <div class="timeline-desc">StandardScaler applied to continuous features (age, trestbps, chol, thalach, oldpeak). Scaler fit on training set only to prevent data leakage.</div>
+          </div>
+          <div class="timeline-step stagger-4">
+            <div class="timeline-label">Step 4 — Train-Test Split</div>
+            <div class="timeline-desc">80% training / 20% test split with stratification to preserve class balance across both sets.</div>
+          </div>
+          <div class="timeline-step stagger-5">
+            <div class="timeline-label">Step 5 — Model Training</div>
+            <div class="timeline-desc">Logistic Regression (C=1.0, max_iter=1000), Random Forest (100 estimators), SVM (RBF kernel, probability=True). All trained and persisted as .pkl files.</div>
+          </div>
+          <div class="timeline-step stagger-6">
+            <div class="timeline-label">Step 6 — Accuracy Comparison</div>
+            <div class="timeline-desc">Accuracy, Precision, Recall, F1-Score, and ROC-AUC computed for each model. Confusion matrices and ROC curves generated as base64 PNG images.</div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-label">Step 7 — Prediction & Reporting</div>
+            <div class="timeline-desc">Random Forest serves as the final prediction engine. Risk score = RF predict_proba × 100. Results saved to SQLite and PDF reports generated on demand.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tech Stack -->
+      <div class="card" style="margin-bottom:var(--sp-xl)">
+        <div class="card-header"><span class="card-title">⚙️ Technology Stack</span></div>
+        <div class="tech-stack">
+          <div class="tech-item"><div class="tech-icon">🐍</div><strong>Python 3.11</strong><div>Backend language</div></div>
+          <div class="tech-item"><div class="tech-icon">🌶️</div><strong>Flask 3.x</strong><div>REST API framework</div></div>
+          <div class="tech-item"><div class="tech-icon">🤖</div><strong>scikit-learn</strong><div>ML algorithms</div></div>
+          <div class="tech-item"><div class="tech-icon">🐼</div><strong>pandas</strong><div>Data preprocessing</div></div>
+          <div class="tech-item"><div class="tech-icon">🔢</div><strong>NumPy</strong><div>Numerical computing</div></div>
+          <div class="tech-item"><div class="tech-icon">📊</div><strong>matplotlib</strong><div>Chart generation</div></div>
+          <div class="tech-item"><div class="tech-icon">🎨</div><strong>seaborn</strong><div>Styled visualizations</div></div>
+          <div class="tech-item"><div class="tech-icon">📄</div><strong>ReportLab</strong><div>PDF generation</div></div>
+          <div class="tech-item"><div class="tech-icon">🗄️</div><strong>SQLite</strong><div>Patient records DB</div></div>
+          <div class="tech-item"><div class="tech-icon">📈</div><strong>Chart.js</strong><div>Frontend charts</div></div>
+          <div class="tech-item"><div class="tech-icon">🎯</div><strong>HTML/CSS/JS</strong><div>Pure frontend stack</div></div>
+          <div class="tech-item"><div class="tech-icon">💾</div><strong>joblib</strong><div>Model persistence</div></div>
+        </div>
+      </div>
+
+      <!-- Viva Q&A -->
+      <div class="card" style="margin-bottom:var(--sp-xl)">
+        <div class="card-header"><span class="card-title">🎓 Viva Q&A Guide</span><span class="badge badge-purple">Click to expand</span></div>
+        <div style="display:flex;flex-direction:column;gap:8px" id="faq-container">
+          <div class="faq-item">
+            <div class="faq-q">Why did you choose Random Forest as the final model? <span class="faq-icon">+</span></div>
+            <div class="faq-a">Random Forest consistently achieves the highest accuracy (87%+) and ROC-AUC on this dataset because it handles non-linear feature interactions, is robust to outliers, and provides feature importance scores. It also reduces overfitting through bagging (bootstrap aggregation) compared to a single decision tree.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">What is the difference between precision and recall in this context? <span class="faq-icon">+</span></div>
+            <div class="faq-a">Precision = of all patients predicted as having heart disease, how many actually do (avoids false alarms). Recall = of all patients who actually have heart disease, how many did we correctly identify (avoids missing cases). In a medical context, high recall is critical — missing a true positive (heart disease patient) is more dangerous than a false positive.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">What is a confusion matrix and how do you read it? <span class="faq-icon">+</span></div>
+            <div class="faq-a">A 2×2 matrix showing True Positives (disease, predicted disease), True Negatives (no disease, predicted no disease), False Positives (no disease, predicted disease — Type I error), and False Negatives (disease, predicted no disease — Type II error). In cardiovascular disease prediction, minimizing False Negatives is the clinical priority.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">How did you handle data preprocessing? <span class="faq-icon">+</span></div>
+            <div class="faq-a">Median imputation for missing values (robust to outliers), duplicate removal, one-hot encoding for categorical features (cp, restecg, slope, thal, exang), and StandardScaler for continuous features. Critically, the scaler was fit only on the training set to prevent data leakage into the test set.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">What is ROC-AUC and why is it important? <span class="faq-icon">+</span></div>
+            <div class="faq-a">ROC (Receiver Operating Characteristic) curve plots True Positive Rate vs. False Positive Rate at all classification thresholds. AUC (Area Under Curve) summarizes the curve as a single number — 1.0 is perfect, 0.5 is random. AUC is important because it's threshold-independent and works well with imbalanced datasets common in medical classification.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">How does SVM work for classification? <span class="faq-icon">+</span></div>
+            <div class="faq-a">Support Vector Machine finds the optimal hyperplane that maximizes the margin between classes. With RBF (Radial Basis Function) kernel, it can classify non-linearly separable data by mapping it to a higher-dimensional space. The kernel trick computes dot products in this space without explicitly mapping — making it computationally efficient.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">What are the most important features for heart disease prediction? <span class="faq-icon">+</span></div>
+            <div class="faq-a">According to the Random Forest feature importance analysis: thal (thalassemia type), ca (number of major vessels), cp (chest pain type), oldpeak (ST depression), and thalach (max heart rate) are typically the top predictors. This aligns with clinical literature on cardiovascular risk factors.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Deployment -->
+      <div class="card">
+        <div class="card-header"><span class="card-title">🚀 Deployment Guide</span></div>
+        <div style="display:flex;flex-direction:column;gap:var(--sp-md)">
+          <div>
+            <div style="font-size:0.8rem;color:var(--neon-blue);font-family:var(--font-display);letter-spacing:0.05em;margin-bottom:6px">STEP 1 — Install Dependencies</div>
+            <div style="background:var(--bg-void);border:1px solid var(--border-dim);border-radius:var(--r-md);padding:12px 16px;font-family:monospace;font-size:0.85rem;color:var(--neon-green)">pip install -r requirements.txt</div>
+          </div>
+          <div>
+            <div style="font-size:0.8rem;color:var(--neon-blue);font-family:var(--font-display);letter-spacing:0.05em;margin-bottom:6px">STEP 2 — Start the Application</div>
+            <div style="background:var(--bg-void);border:1px solid var(--border-dim);border-radius:var(--r-md);padding:12px 16px;font-family:monospace;font-size:0.85rem;color:var(--neon-green)">python run.py</div>
+          </div>
+          <div>
+            <div style="font-size:0.8rem;color:var(--neon-blue);font-family:var(--font-display);letter-spacing:0.05em;margin-bottom:6px">STEP 3 — Open in Browser</div>
+            <div style="background:var(--bg-void);border:1px solid var(--border-dim);border-radius:var(--r-md);padding:12px 16px;font-family:monospace;font-size:0.85rem;color:var(--neon-blue)">http://localhost:5000</div>
+          </div>
+          <p style="font-size:0.82rem;color:var(--text-secondary)">
+            On first run: dataset is generated, all 3 models are trained (~30 seconds), database is initialized. 
+            Subsequent startups are instant. Models are cached as .pkl files and reloaded automatically.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-container"></div>
+  <script src="js/api.js"></script>
+  <script src="js/nav.js"></script>
+  <script>
+    // FAQ accordion
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.closest('.faq-item');
+        const wasOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!wasOpen) item.classList.add('open');
+      });
+    });
+  </script>
+</body>
+</html>

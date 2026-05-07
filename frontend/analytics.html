@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analytics & Visualization — CardioPredict</title>
+  <meta name="description" content="Confusion matrices, feature importance charts, and dataset distributions for the CardioPredict ML pipeline.">
+  <link rel="stylesheet" href="css/globals.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+  <div class="bg-mesh"></div>
+
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand"><div class="brand-icon">❤️</div>Cardio<span class="accent">Predict</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html"><span class="nav-icon">🏠</span>Home</a></li>
+      <li><a href="dashboard.html"><span class="nav-icon">🔬</span>Dashboard</a></li>
+      <li><a href="comparison.html"><span class="nav-icon">📊</span>Model Comparison</a></li>
+      <li><a href="analytics.html" class="active"><span class="nav-icon">📈</span>Analytics</a></li>
+      <li><a href="report.html"><span class="nav-icon">📋</span>Reports</a></li>
+      <li><a href="about.html"><span class="nav-icon">ℹ️</span>About</a></li>
+    </ul>
+    <div class="nav-status">
+      <span class="dot dot-green blink" id="status-dot"></span>
+      <span id="status-text">System Online</span>
+    </div>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="container section-sm">
+      <div class="page-title"><div class="title-icon">📈</div>Analytics & Visualization</div>
+      <p class="page-subtitle">Deep-dive into model performance, feature contributions, and dataset characteristics.</p>
+
+      <!-- Loading -->
+      <div id="analytics-loading" class="card flex-center" style="min-height:160px;gap:var(--sp-md);margin-bottom:var(--sp-lg)">
+        <div class="spinner"></div>
+        <p style="color:var(--text-secondary);font-size:0.9rem">Loading visualizations from server...</p>
+      </div>
+
+      <!-- Confusion Matrices -->
+      <h3 style="font-family:var(--font-display);font-size:0.9rem;color:var(--neon-blue);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:var(--sp-md)">Confusion Matrices</h3>
+      <div class="grid-3" style="margin-bottom:var(--sp-xl)">
+        <div class="card">
+          <div class="card-header"><span class="card-title">Logistic Regression</span></div>
+          <img id="cm-logistic-regression" class="chart-img" src="" alt="LR Confusion Matrix" style="min-height:180px;background:var(--bg-panel)">
+        </div>
+        <div class="card">
+          <div class="card-header"><span class="card-title">Random Forest</span><span class="badge badge-yellow">Final Engine</span></div>
+          <img id="cm-random-forest" class="chart-img" src="" alt="RF Confusion Matrix" style="min-height:180px;background:var(--bg-panel)">
+        </div>
+        <div class="card">
+          <div class="card-header"><span class="card-title">SVM</span></div>
+          <img id="cm-svm" class="chart-img" src="" alt="SVM Confusion Matrix" style="min-height:180px;background:var(--bg-panel)">
+        </div>
+      </div>
+
+      <!-- Feature Importance -->
+      <div class="card" style="margin-bottom:var(--sp-xl)">
+        <div class="card-header">
+          <span class="card-title">🌲 Feature Importance — Random Forest</span>
+          <span class="badge badge-green">Top 12 Features</span>
+        </div>
+        <img id="fi-img" class="chart-img" src="" alt="Feature Importance" style="min-height:280px;background:var(--bg-panel)">
+      </div>
+
+      <!-- ROC Curve -->
+      <div class="card" style="margin-bottom:var(--sp-xl)">
+        <div class="card-header">
+          <span class="card-title">📈 ROC Curve Comparison</span>
+          <span class="badge badge-blue">All Models</span>
+        </div>
+        <img id="roc-analytics-img" class="chart-img" src="" alt="ROC Curve" style="min-height:280px;background:var(--bg-panel)">
+      </div>
+
+      <!-- Dataset Distributions -->
+      <h3 style="font-family:var(--font-display);font-size:0.9rem;color:var(--neon-blue);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:var(--sp-md)">Dataset Distributions</h3>
+      <div class="grid-2" style="margin-bottom:var(--sp-xl)">
+        <div class="card">
+          <div class="card-header"><span class="card-title">Age Distribution</span></div>
+          <div class="chart-container" style="height:220px">
+            <canvas id="age-dist"></canvas>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><span class="card-title">Sex Distribution</span></div>
+          <div class="chart-container" style="height:220px">
+            <canvas id="sex-dist"></canvas>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><span class="card-title">Chest Pain Type</span></div>
+          <div class="chart-container" style="height:220px">
+            <canvas id="cp-dist"></canvas>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><span class="card-title">Target Distribution</span></div>
+          <div class="chart-container" style="height:220px">
+            <canvas id="target-dist"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-container"></div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/analytics.js"></script>
+</body>
+</html>

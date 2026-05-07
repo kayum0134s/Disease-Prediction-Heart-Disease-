@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prediction Dashboard — CardioPredict</title>
+  <meta name="description" content="Enter patient clinical data and receive an instant AI-powered cardiovascular risk prediction.">
+  <link rel="stylesheet" href="css/globals.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+  <div class="bg-mesh"></div>
+
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand"><div class="brand-icon">❤️</div>Cardio<span class="accent">Predict</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html"><span class="nav-icon">🏠</span>Home</a></li>
+      <li><a href="dashboard.html" class="active"><span class="nav-icon">🔬</span>Dashboard</a></li>
+      <li><a href="comparison.html"><span class="nav-icon">📊</span>Model Comparison</a></li>
+      <li><a href="analytics.html"><span class="nav-icon">📈</span>Analytics</a></li>
+      <li><a href="report.html"><span class="nav-icon">📋</span>Reports</a></li>
+      <li><a href="about.html"><span class="nav-icon">ℹ️</span>About</a></li>
+    </ul>
+    <div class="nav-status">
+      <span class="dot dot-green blink" id="status-dot"></span>
+      <span id="status-text">System Online</span>
+    </div>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="container section-sm">
+      <div class="page-title">
+        <div class="title-icon">🔬</div>
+        Prediction Dashboard
+      </div>
+      <p class="page-subtitle">Enter clinical parameters below for an AI-powered cardiovascular risk assessment.</p>
+
+      <div class="dashboard-layout">
+        <!-- LEFT: Prediction Form -->
+        <div class="card prediction-form-card">
+          <div class="card-header">
+            <span class="card-title">🩺 Patient Parameters</span>
+            <span class="badge badge-blue">13 Features</span>
+          </div>
+
+          <form id="prediction-form" autocomplete="off">
+            <!-- Patient name -->
+            <div class="form-group" style="margin-bottom:var(--sp-md)">
+              <label for="patient-name">Patient Name</label>
+              <input id="patient-name" name="name" type="text" class="form-control" placeholder="e.g. John Doe">
+            </div>
+
+            <p class="form-section-title">Demographics</p>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="age">Age<span class="required">*</span></label>
+                <input id="age" name="age" type="number" class="form-control" min="29" max="77" placeholder="29–77" required>
+              </div>
+              <div class="form-group">
+                <label for="sex">Sex<span class="required">*</span></label>
+                <select id="sex" name="sex" class="form-control" required>
+                  <option value="">Select sex</option>
+                  <option value="1">Male</option>
+                  <option value="0">Female</option>
+                </select>
+              </div>
+            </div>
+
+            <p class="form-section-title">Vital Signs</p>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="trestbps">Resting Blood Pressure<span class="required">*</span></label>
+                <input id="trestbps" name="trestbps" type="number" class="form-control" min="94" max="200" placeholder="94–200 mmHg" required>
+              </div>
+              <div class="form-group">
+                <label for="chol">Serum Cholesterol<span class="required">*</span></label>
+                <input id="chol" name="chol" type="number" class="form-control" min="126" max="564" placeholder="126–564 mg/dl" required>
+              </div>
+              <div class="form-group">
+                <label for="thalach">Max Heart Rate<span class="required">*</span></label>
+                <input id="thalach" name="thalach" type="number" class="form-control" min="71" max="202" placeholder="71–202 bpm" required>
+              </div>
+              <div class="form-group">
+                <label for="fbs">Fasting Blood Sugar<span class="required">*</span></label>
+                <select id="fbs" name="fbs" class="form-control" required>
+                  <option value="">Select</option>
+                  <option value="1">&gt;120 mg/dl (High)</option>
+                  <option value="0">≤120 mg/dl (Normal)</option>
+                </select>
+              </div>
+            </div>
+
+            <p class="form-section-title">Cardiac Indicators</p>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="cp">Chest Pain Type<span class="required">*</span></label>
+                <select id="cp" name="cp" class="form-control" required>
+                  <option value="">Select type</option>
+                  <option value="0">Typical Angina</option>
+                  <option value="1">Atypical Angina</option>
+                  <option value="2">Non-Anginal Pain</option>
+                  <option value="3">Asymptomatic</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="restecg">Resting ECG<span class="required">*</span></label>
+                <select id="restecg" name="restecg" class="form-control" required>
+                  <option value="">Select result</option>
+                  <option value="0">Normal</option>
+                  <option value="1">ST-T Abnormality</option>
+                  <option value="2">LV Hypertrophy</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="exang">Exercise-Induced Angina<span class="required">*</span></label>
+                <select id="exang" name="exang" class="form-control" required>
+                  <option value="">Select</option>
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="oldpeak">ST Depression (Oldpeak)<span class="required">*</span></label>
+                <input id="oldpeak" name="oldpeak" type="number" class="form-control" min="0" max="6.2" step="0.1" placeholder="0.0–6.2" required>
+              </div>
+              <div class="form-group">
+                <label for="slope">Slope of Peak ST<span class="required">*</span></label>
+                <select id="slope" name="slope" class="form-control" required>
+                  <option value="">Select slope</option>
+                  <option value="0">Upsloping</option>
+                  <option value="1">Flat</option>
+                  <option value="2">Downsloping</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="ca">Major Vessels (CA)<span class="required">*</span></label>
+                <select id="ca" name="ca" class="form-control" required>
+                  <option value="">Select count</option>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="thal">Thalassemia<span class="required">*</span></label>
+                <select id="thal" name="thal" class="form-control" required>
+                  <option value="">Select type</option>
+                  <option value="1">Normal</option>
+                  <option value="2">Fixed Defect</option>
+                  <option value="3">Reversible Defect</option>
+                </select>
+              </div>
+            </div>
+
+            <div style="margin-top:var(--sp-lg);display:flex;gap:var(--sp-sm)">
+              <button type="submit" class="btn btn-primary btn-full btn-lg" id="submit-btn">
+                <div class="btn-spinner"></div>
+                <span class="btn-text">🔬 Run AI Prediction</span>
+              </button>
+              <button type="reset" class="btn btn-ghost" title="Reset form">↺</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- RIGHT: Results -->
+        <div class="results-area" id="results-area" style="display:flex;flex-direction:column;gap:var(--sp-lg)">
+          <!-- Placeholder -->
+          <div class="card" id="result-placeholder">
+            <div class="result-placeholder">
+              <div class="result-placeholder-icon animate-heartbeat">💓</div>
+              <h3 style="font-family:var(--font-display);font-size:1rem;color:var(--text-secondary)">Awaiting Analysis</h3>
+              <p class="result-placeholder-text">Fill in the patient parameters and click<br>"Run AI Prediction" to see results.</p>
+            </div>
+          </div>
+
+          <!-- Hidden result panels (shown after prediction) -->
+          <!-- Risk Gauge -->
+          <div class="card" id="gauge-card" style="display:none">
+            <div class="card-header">
+              <span class="card-title">⚡ Risk Score</span>
+              <span class="badge badge-blue" id="best-model-badge">RF Engine</span>
+            </div>
+            <div class="gauge-card-inner">
+              <div class="gauge-container" style="position:relative;width:220px">
+                <svg class="gauge-svg" width="220" height="130" viewBox="0 0 220 130">
+                  <path class="gauge-bg-arc"
+                    d="M 20 120 A 90 90 0 0 1 200 120"
+                    fill="none" stroke="rgba(0,212,255,0.1)" stroke-width="14" stroke-linecap="round"/>
+                  <path id="gauge-arc" class="gauge-fill-arc"
+                    d="M 20 120 A 90 90 0 0 1 200 120"
+                    fill="none" stroke="#00d4ff" stroke-width="14" stroke-linecap="round"
+                    stroke-dasharray="283" stroke-dashoffset="283"/>
+                </svg>
+                <div class="gauge-center-text" style="bottom:24px;top:auto;transform:translate(-50%,0)">
+                  <span class="gauge-value" id="gauge-value">0.0</span>
+                  <span class="gauge-unit">%</span>
+                </div>
+              </div>
+              <div id="risk-label" style="font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--neon-blue)">—</div>
+            </div>
+          </div>
+
+          <!-- Diagnosis Panel -->
+          <div id="result-panel" class="result-panel" style="display:none">
+            <span class="result-icon" style="font-size:2.5rem">💓</span>
+            <div class="result-title" style="font-size:1.2rem">—</div>
+            <div class="result-sub" style="font-size:0.85rem;color:var(--text-secondary);margin-top:6px">—</div>
+          </div>
+
+          <!-- Model Breakdown -->
+          <div class="card" id="breakdown-card" style="display:none">
+            <div class="card-header">
+              <span class="card-title">🤖 Model Breakdown</span>
+              <span class="badge badge-yellow">Best: <span id="best-model">RF</span></span>
+            </div>
+            <div id="model-breakdown" class="model-breakdown"></div>
+          </div>
+
+          <!-- Recommendations -->
+          <div class="card" id="rec-card" style="display:none">
+            <div class="card-header">
+              <span class="card-title">💊 Health Recommendations</span>
+            </div>
+            <ul id="rec-list" class="rec-list"></ul>
+            <div style="margin-top:var(--sp-md);display:flex;gap:var(--sp-sm)">
+              <a id="download-pdf-btn" class="btn btn-outline btn-sm" style="display:none">
+                📄 Download Report
+              </a>
+              <a href="report.html" class="btn btn-ghost btn-sm">📋 View All Records</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-container"></div>
+
+  <script src="js/api.js"></script>
+  <script src="js/nav.js"></script>
+  <script>
+    // Show result cards on prediction
+    const origRender = window.renderResults;
+    document.addEventListener('DOMContentLoaded', () => {});
+
+    // Override to reveal hidden cards
+    document.getElementById('prediction-form')?.addEventListener('submit', () => {
+      setTimeout(() => {
+        ['gauge-card','result-panel','breakdown-card','rec-card'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.style.display = '';
+        });
+        document.getElementById('result-placeholder').style.display = 'none';
+      }, 300);
+    });
+  </script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
